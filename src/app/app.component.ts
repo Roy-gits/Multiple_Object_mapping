@@ -81,11 +81,10 @@ export class AppComponent implements OnInit {
   name = 'Angular';
 
   ngOnInit() {
-    this.formatData(this.data);
+    console.log('original-array', this.data);
   }
 
-  formatData(data) {
-    console.log('original-array', data);
+  mapData() {    
     let obj = {
       FishBone: [],
       MindMap: [],
@@ -95,23 +94,7 @@ export class AppComponent implements OnInit {
       bpmn: [],
     };
 
-    // data.forEach(a=>{
-    //   if(a.FishBone.length > 0){
-    //     obj.FishBone.push(a.FishBone[0]);
-    //   }else if(a.MindMap.length > 0){
-    //     obj.MindMap.push(a.MindMap[0]);
-    //   }else if(a.swot.length > 0){
-    //     obj.swot.push(a.swot[0]);
-    //   }else if(a.DecisionMatrix.length > 0){
-    //     obj.DecisionMatrix.push(a.DecisionMatrix[0]);
-    //   }else if(a.Stakeholder.length > 0){
-    //     obj.Stakeholder.push(a.Stakeholder[0]);
-    //   }else if(a.bpmn.length > 0){
-    //     obj.bpmn.push(a.bpmn[0]);
-    //   }
-    // })
-
-    data.map((a) => {
+    this.data.map((a) => {
       if (a.FishBone.length > 0) {
         a.FishBone.forEach((f) => {
           obj.FishBone.push(f);
@@ -142,7 +125,6 @@ export class AppComponent implements OnInit {
           obj.bpmn.push(b);
         });
       }
-      console.log('map-data', a);
     });
     console.log('final-data', obj);
   }
